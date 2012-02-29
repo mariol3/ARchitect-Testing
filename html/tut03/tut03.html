@@ -4,6 +4,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
       <title>Title</title>
       <script src="architect://architect.js"></script>
+      <script src="../../js/ADE/ade.js"></script>
       <link rel="stylesheet" type="text/css" href="../../css/tut03/tut03.css" />
       <link rel="stylesheet" type="text/css" href="../../css/tut01/tut01.css" />
    </head>
@@ -21,13 +22,15 @@
             /* Creates a new geo location */
             var geoLocation = new AR.GeoLocation(objLat, objLon);
             
-            /* Creates a new drawable, a circle */
-            var circleOptions = {
+            
+            var circle = new AR.Circle(2, {
                style: {
                   fillColor: '#FFC100'
+               },
+               triggers: {
+                  onClick: function (){ circle.style.fillColor = '#FF0000'; }
                }
-            };
-            var circle = new AR.Circle(2, circleOptions);
+            });
             
             /* 
              * Creates a new geo object with the previous calculated location
