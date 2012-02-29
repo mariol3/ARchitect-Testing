@@ -1,0 +1,14 @@
+.status {
+   border-radius: 2em;
+   border: solid 1px #6d6d6d;
+   background-color: rgba(256, 193, 0, 0.7);
+   color: black;
+   text-align: center;
+   font-weight: bold;
+
+   position:absolute;
+   width: 90%;
+   height: 5%;
+   left: 5%;
+   top: 1%;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+      <title>Title</title>
+      <script src="architect://architect.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../css/tut03/tut03.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/tut01/tut01.css" />
+   </head>
+   <body>
+      <div id="messageElement" class="message">
+         Loading...
+      </div>
+      <div id="statusElement" class="status"></div>
+      <script type="text/javascript">
+         AR.context.onLocationChanged = function(lat, lon, alt, acc) {
+            /* Calculate new object latitude and longitude */
+            var objLat = lat + ((Math.random() - 0.5) / 1000);     
+            var objLon = lon + ((Math.random() - 0.5) / 1000);
+            
+            /* Creates a new geo location */
+            var geoLocation = new AR.GeoLocation(objLat, objLon);
+            
+            /* Creates a new drawable, a circle */
+            var circleOptions = {
+               style: {
+                  fillColor: '#FFC100'
+               }
+            };
+            var circle = new AR.Circle(2, circleOptions);
+            
+            /* 
+             * Creates a new geo object with the previous calculated location
+             * and showed as a circle
+             */ 
+            var geoObjectOptions = {
+               drawables: {
+                  cam: circle
+               },
+               triggers: {
+                  onEnterFieldOfVision: enterFOV,
+                  onExitFieldOfVision: exitFOV
+               }
+            };
+            var geoObject = new AR.GeoObject(geoLocation, geoObjectOptions);
+            
+            /* Stop calling this function */
+            AR.context.onLocationChanged = null;
+            
+            /* Hide loading message */
+            document.getElementById("messageElement").style.display = "none";
+         }
+         
+         function enterFOV() {
+            document.getElementById("statusElement").innerHTML = "Yo!";
+         }
+         
+         function exitFOV() {
+            document.getElementById("statusElement").innerHTML = "Where are you?!";
+         }
+      </script>
+   </body>
+</html>
