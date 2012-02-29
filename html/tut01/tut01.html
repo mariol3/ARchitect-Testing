@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+      <title>Tut 01</title>
+      <script src="architect://architect.js"></script>
+      <script src="../../js/ADE/ade.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../css/tut01/tut01.css" />
+   </head>
+   <body onLoad="javascript:AR.logger.activateDebugMode();">
+      <div id="messageElement" class="message" onclick="messageClicked()">
+         Hello World!
+      </div>
+      <script type="text/javascript">
+         function messageClicked() {
+            document.getElementById("messageElement").innerHTML = "Clicked!";
+         }
+      </script>
+   </body>
+</html>
